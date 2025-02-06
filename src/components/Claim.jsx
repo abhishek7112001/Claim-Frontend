@@ -7,6 +7,7 @@ const Claim = () => {
   const [selectedPolicy, setSelectedPolicy] = useState("");
   const [claimAmount, setClaimAmount] = useState("");
   const [description, setDescription] = useState("");
+  const [processedAmount, setProcessedAmount] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,6 +37,7 @@ const Claim = () => {
       );
 
       console.log("Claim submitted successfully");
+      setProcessedAmount(response.data.processedAmount);
       navigate("/profile"); // Redirect to profile
     } catch (error) {
       console.error("Error submitting claim:", error.response?.data?.error || error.message);

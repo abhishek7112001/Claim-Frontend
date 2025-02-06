@@ -19,10 +19,14 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
 
+      // console.log(formData);  i tried this for testing whether formData was converted to json
+      
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || "Login failed");
 
       localStorage.setItem("token", data.token);
+      // console.log(data.token);      i tested this to see the token of a user
+      
       alert("Login successful!");
       navigate("/profile"); // Redirect to profile page after login
     } catch (err) {
