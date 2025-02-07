@@ -15,7 +15,7 @@ const Claim = () => {
     const fetchPolicies = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("process.env.BACKEND_RENDER_URL/api/policies", {
+        const response = await axios.get("https://stateful-claim-management-system.onrender.com/api/policies", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setPolicies(response.data);
@@ -39,7 +39,7 @@ const Claim = () => {
       console.log("token ============",token)
     console.log("Im printing this")
      const res = await axios.post(
-        "process.env.BACKEND_RENDER_URL/api/claims",
+        "https://stateful-claim-management-system.onrender.com/api/claims",
         { policyId: selectedPolicy, claimAmount, description },
         { headers: { Authorization: `Bearer ${token}` } }
       );
