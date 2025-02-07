@@ -15,7 +15,7 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8000/api/auth/login/user", {
+        const response = await axios.get("process.env.BACKEND_RENDER_URL/api/auth/login/user", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -28,7 +28,7 @@ const Profile = () => {
     const fetchPolicies = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8000/api/policies", {
+        const response = await axios.get("process.env.BACKEND_RENDER_URL/api/policies", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -41,7 +41,7 @@ const Profile = () => {
     const fetchClaims = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8000/api/claims", {
+        const response = await axios.get("process.env.BACKEND_RENDER_URL/api/claims", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
