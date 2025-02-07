@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import {Link, useNavigate } from "react-router-dom";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
