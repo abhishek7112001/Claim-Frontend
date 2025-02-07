@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {Link, useNavigate } from "react-router-dom";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -16,7 +14,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("process.env.BACKEND_RENDER_URL/api/auth/login/user", {
+      const response = await fetch("http://localhost:8000/api/auth/login/user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
