@@ -7,7 +7,7 @@ const Claim = () => {
   const [selectedPolicy, setSelectedPolicy] = useState("");
   const [claimAmount, setClaimAmount] = useState("");
   const [description, setDescription] = useState("");
-  const [processedAmount, setProcessedAmount] = useState(null);
+  const [processedAmount, setProcessedAmount] = useState(1000);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,19 +25,33 @@ const Claim = () => {
     fetchPolicies();
   }, []);
 
+  useEffect(() => {
+    console.log("Updated processedAmount:", processedAmount);
+  }, [processedAmount]);
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const token = localStorage.getItem("token");
-      await axios.post(
+      console.log("token ============",token)
+    console.log("Im printing this")
+     const res = await axios.post(
         "http://localhost:8000/api/claims",
         { policyId: selectedPolicy, claimAmount, description },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      console.log("res is ===========",res.data.processedAmount)
 
       console.log("Claim submitted successfully");
-      setProcessedAmount(response.data.processedAmount);
+      console.log("im setting the amt ");
+const amt=res.data.processedAmount
+console.log("amt isss ",amt)
+      setProcessedAmount(amt);
+      
+     
+      
       navigate("/profile"); // Redirect to profile
     } catch (error) {
       console.error("Error submitting claim:", error.response?.data?.error || error.message);
