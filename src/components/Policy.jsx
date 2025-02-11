@@ -14,7 +14,7 @@ const Policy = () => {
     try {
       const token = localStorage.getItem("token"); // Ensure user is authenticated
       const response = await axios.post(
-        "http://localhost:8000/api/policies",
+        "https://stateful-claim-management-system.onrender.com/api/policies",
         { type: policyType, coverageAmount },
         { headers: { Authorization: `Bearer ${token}` } }
       );
