@@ -16,7 +16,7 @@ const Register = () => {
     e.preventDefault();
     setError(""); // Clear any previous errors
     try {
-      const response = await axios.post("process.env.BACKEND_RENDER_URL/api/auth/register", formData);
+      const response = await axios.post("http://localhost:8000/api/auth/register", formData);
       console.log("Registration successful:", response.data);
       navigate("/login"); // Redirect to login page
     } catch (err) {
